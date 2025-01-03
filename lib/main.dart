@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_movie_app/pages/home_page.dart';
+
+import 'pages/home_page.dart';
+import 'pages/movies_page.dart';
+import 'pages/products_page.dart';
+import 'utils/app_routes.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -18,6 +22,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
       home: const HomePage(),
+      initialRoute: AppRoutes.HOME,
+      routes: {
+        AppRoutes.MOVIES: (_) => const MoviesPage(),
+        AppRoutes.PRODUCTS: (_) => const ProductsPage(),
+      },
     );
   }
 }
